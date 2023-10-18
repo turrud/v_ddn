@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AboutAwardController;
 use App\Http\Controllers\AboutEventController;
@@ -12,24 +13,38 @@ use App\Http\Controllers\Store3dBoothController;
 use App\Http\Controllers\StoreFloristController;
 use App\Http\Controllers\ContactCourseController;
 use App\Http\Controllers\ContactInvestController;
+use App\Http\Controllers\view\ViewHomeController;
 use App\Http\Controllers\ContactPartnerController;
 use App\Http\Controllers\ContactServiceController;
 use App\Http\Controllers\StoreFurnitureController;
+use App\Http\Controllers\view\ViewAboutController;
 use App\Http\Controllers\ContactDonationController;
+use App\Http\Controllers\store\ViewStoreController;
 use App\Http\Controllers\StoreDecorationController;
 use App\Http\Controllers\ContactFreelanceController;
 use App\Http\Controllers\Store3dFurnitureController;
 use App\Http\Controllers\ServiceBoothDesignController;
 use App\Http\Controllers\ServiceArchitectureController;
 use App\Http\Controllers\Store3dArchitectureController;
+use App\Http\Controllers\view\ViewAboutAwardController;
+use App\Http\Controllers\view\ViewAboutEventController;
 use App\Http\Controllers\ServiceVirtualOfficeController;
+use App\Http\Controllers\view\ViewAboutClientController;
+use App\Http\Controllers\view\ViewAboutPeopleController;
 use App\Http\Controllers\ServiceInteriorDesignController;
 use App\Http\Controllers\ServiceInteriorPublicController;
+use App\Http\Controllers\view\ViewAboutProfileController;
 use App\Http\Controllers\ServiceWeddingDecorationController;
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\store\ViewStore3dArchitectureController;
+use App\Http\Controllers\store\ViewStore3dBoothDesignController;
+use App\Http\Controllers\store\ViewStore3dFurnitureController;
+use App\Http\Controllers\store\ViewStoreDecorationController;
+use App\Http\Controllers\store\ViewStoreFloristController;
+use App\Http\Controllers\store\ViewStoreFurnitureController;
+use App\Http\Controllers\view\ViewAboutDesignMethodController;
 
 /*
-|--------------------------------------------------------------------------
+|----------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -39,9 +54,30 @@ use App\Http\Controllers\NewsController;
 |
 */
 
-Route::get('/', function () {
-    return 'Welcome to the home';
-});
+Route::get('/', [ViewHomeController::class, 'index'])->name('home');
+
+Route::get('/about', [ViewAboutController::class, 'index'])->name('about');
+Route::get('/about/profile', [ViewAboutProfileController::class, 'index'])->name('profile');
+Route::get('/about/people', [ViewAboutPeopleController::class, 'index'])->name('people');
+Route::get('/about/design-method', [ViewAboutDesignMethodController::class, 'index'])->name('design-method');
+Route::get('/about/event', [ViewAboutEventController::class, 'index'])->name('event');
+Route::get('/about/client', [ViewAboutClientController::class, 'index'])->name('client');
+Route::get('/about/award', [ViewAboutAwardController::class, 'index'])->name('award');
+
+
+// ========================== //
+
+Route::get('/store', [ViewStoreController::class, 'index'])->name('store');
+Route::get('/store/3d-furniture', [ViewStore3dFurnitureController::class, 'index'])->name('3d-furniture');
+Route::get('/store/3d-architecture', [ViewStore3dArchitectureController::class, 'index'])->name('3d-architecture');
+Route::get('/store/3d-booth', [ViewStore3dBoothDesignController::class, 'index'])->name('3d-booth');
+Route::get('/store/furniture', [ViewStoreFurnitureController::class, 'index'])->name('furniture');
+Route::get('/store/decoration', [ViewStoreDecorationController::class, 'index'])->name('decoration');
+Route::get('/store/florist', [ViewStoreFloristController::class, 'index'])->name('florist');
+
+
+
+
 
 Route::get('/admin', function () {
     return view('welcome');

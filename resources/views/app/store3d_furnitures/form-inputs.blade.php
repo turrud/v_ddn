@@ -28,8 +28,8 @@
             name="price"
             label="Price"
             :value="old('price', ($editing ? $store3dFurniture->price : ''))"
-            max="255"
-            step="0.01"
+            {{-- max="255"
+            step="0.01" --}}
             placeholder="Price"
             required
         ></x-inputs.number>
