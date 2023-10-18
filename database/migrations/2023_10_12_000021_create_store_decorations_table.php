@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description');
-            $table->decimal('price');
+            $table->integer('price');
             $table->string('image')->nullable();
             $table->string('file')->nullable();
 
